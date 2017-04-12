@@ -25,9 +25,9 @@ var top1 = $("#ground").offset().top - $("#pic").height();
    //Moves Character
     $("#body").keydown(function(event) {
     if (event.which === 37) {
-        $("#black").css("left", $("#black").offset().left - 10);
+        $("#black").css("left", $("#black").offset().left - 15);
     } else if (event.which === 39) {
-        $("#black").css("left", $("#black").offset().left + 10);  
+        $("#black").css("left", $("#black").offset().left + 15);  
     }
         else {
         return;
@@ -42,14 +42,43 @@ var top1 = $("#ground").offset().top - $("#pic").height();
 
 
 
-function checkCollision() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**function checkCollision() {
+    
+    var widx = $("#body").width();
+    var chax = $("#black").offset().left;
+    
  
     var blackTop = $("#black").offset().top;
     var picBottom =$("#pic").width();
     
     if(blackTop < picBottom) {
         alert ("You died. :D");
-    } else{
+    } if else(chax < widx) {
+        return
+    };
+    
+    else{
         $("#black").show();
     }
 }
+
+**/
