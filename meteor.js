@@ -21,4 +21,35 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     
    }, 100 );
    
+   
+   //Moves Character
+    $("#body").keydown(function(event) {
+    if (event.which === 37) {
+        $("#black").css("left", $("#black").offset().left - 10);
+    } else if (event.which === 39) {
+        $("#black").css("left", $("#black").offset().left + 10);  
+    }
+        else {
+        return;
+    }
+    
+        //Checks for position relative to each other
+        checkCollision();
 });
+   
+});
+
+
+
+
+function checkCollision() {
+ 
+    var blackTop = $("#black").offset().top;
+    var picBottom =$("#pic").width();
+    
+    if(blackTop < picBottom) {
+        alert ("You died. :D");
+    } else{
+        $("#black").show();
+    }
+}

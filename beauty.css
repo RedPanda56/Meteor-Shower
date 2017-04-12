@@ -20,7 +20,18 @@ body {
 #ground { 
         position: absolute;
         background-color: black;
-        width: 100%;
+        width: 98%;
         height: 20px;
         top: 95%;
     }    
+    
+    
+#black {
+    height: 10px;
+    width: 50px;
+    position: absolute;
+    background-color: black;
+    top:90%;
+    left:50%;
+    }
+
