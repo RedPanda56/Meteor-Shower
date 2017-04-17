@@ -4,23 +4,22 @@ $(document).ready(function()
     
 var $pic = $("#pic"); 
 
+
+
    setInterval(function(){
-       
-       
+    
 var bot = $("#pic").offset().top ; 
 var top1 = $("#ground").offset().top - $("#pic").height();
        
     if (bot < top1){
     $("#pic").css("top", $("#pic").offset().top + 40);
-      
-} else{ 
+}   else{ 
     $("#pic").css("top", 0);
-    
-    
-} 
+}
+     
+    checkCollision();
     
    }, 100 );
-   
    
    //Moves Character
     $("#body").keydown(function(event) {
@@ -34,51 +33,31 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     }
     
         //Checks for position relative to each other
-        checkCollision();
+        
 });
    
+    
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**function checkCollision() {
     
-    var widx = $("#body").width();
-    var chax = $("#black").offset().left;
+
     
- 
+
+
+function checkCollision() {
+    
     var blackTop = $("#black").offset().top;
-    var picBottom =$("#pic").width();
+    var picBottom = $("#pic").offset().top + $("#pic").height();
+    var blackBottom = blackTop + $("#black").width();
+    var picTop = $("#pic").offset().top;
+    var blackRight = blackLeft + $("#black").width();
+    var picLeft = $("#pic").offset().left;
+    var blackLeft = $("#black").offset().left;
+    var picRight = picLeft + $("#pic").width();
     
-    if(blackTop < picBottom) {
+    if(blackRight > picLeft && blackLeft < picRight && blackTop < picBottom && blackBottom > picTop) {
         alert ("You died. :D");
-    } if else(chax < widx) {
-        return
-    };
-    
-    else{
+    } 
+    else {
         $("#black").show();
     }
-}
-
-**/
+};
