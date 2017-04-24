@@ -15,8 +15,6 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     $("#pic").css("left", rando);
     $("#pic").css("top", 0);
 }
-   
-///checkCollision();
     
    }, 100 );
    
@@ -24,6 +22,7 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     $("#body").keydown(function(event) {
         
         dontMove();
+        checkCollision();
         
     if (event.which === 37) {
         $("#black").css("left", $("#black").offset().left - 20);
@@ -37,26 +36,26 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     
 });
     
-/**function checkCollision() {
+function checkCollision() {
     
     var blackTop = $("#black").offset().top;
-    var picBottom = $("#pic").offset().top + $("#pic").height();
-    var blackBottom = blackTop + $("#black").width();
+    var picBottom = $("#pic").offset().top - $("#pic").height();
+    var blackBottom = $("#black").offset().top - $("#black").height();
     var picTop = $("#pic").offset().top;
-    var blackRight = blackLeft + $("#black").width();
+    var blackRight = $("#black").offset().left + $("#black").width();
     var picLeft = $("#pic").offset().left;
     var blackLeft = $("#black").offset().left;
-    var picRight = picLeft + $("#pic").width();
+    var picRight = $("#pic").offset().left + $("#pic").width();
     
-    if(blackRight > picLeft && blackLeft < picRight && blackTop < picBottom && blackBottom > picTop) {
-        alert ("You died. :D");
+    if(picBottom == blackTop) {
+        $("#black").hide();
     } 
     else {
         $("#black").show();
     }
 };
 
-**/
+
 
 
 
