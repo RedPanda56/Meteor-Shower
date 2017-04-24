@@ -15,13 +15,16 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     $("#pic").css("left", rando);
     $("#pic").css("top", 0);
 }
-    dontMove();
-    checkCollision();
+   
+///checkCollision();
     
    }, 100 );
    
    //Moves Character
     $("#body").keydown(function(event) {
+        
+        dontMove();
+        
     if (event.which === 37) {
         $("#black").css("left", $("#black").offset().left - 15);
     } else if (event.which === 39) {
@@ -34,7 +37,7 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     
 });
     
-function checkCollision() {
+/**function checkCollision() {
     
     var blackTop = $("#black").offset().top;
     var picBottom = $("#pic").offset().top + $("#pic").height();
@@ -53,15 +56,23 @@ function checkCollision() {
     }
 };
 
+**/
+
 
 
 function dontMove() {
     
-    var barWidth = $("#black").width();
+    var barRight = $("#black").offset().left;
+    var barLeft = $("#black").offset().left + $("#black").width();
     var pageRight = $("#body").offset().left + $("#body").width();
     var pageLeft = $("#body").offset().left;
     
-    if(barWidth > pageRight && barWidth < pageLeft);
-        alert("hi");
-
+ 
+    if (barRight < pageLeft) {
+        $("#black").css("left", $("#black").offset().left + 15);
+    }  
+    
+    else if (barLeft > pageRight) {
+        $("#black").css("left", $("#black").offset().left - 15);
+    }
 };
