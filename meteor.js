@@ -26,9 +26,9 @@ var top1 = $("#ground").offset().top - $("#pic").height();
         dontMove();
         
     if (event.which === 37) {
-        $("#black").css("left", $("#black").offset().left - 15);
+        $("#black").css("left", $("#black").offset().left - 20);
     } else if (event.which === 39) {
-        $("#black").css("left", $("#black").offset().left + 15);  
+        $("#black").css("left", $("#black").offset().left + 20);  
     }
         else {
         return;
@@ -69,10 +69,10 @@ function dontMove() {
     
  
     if (barRight < pageLeft) {
-        $("#black").css("left", $("#black").offset().left + 15);
+        $("#black").css("left", $("#black").offset().left + 20);
     }  
     
     else if (barLeft > pageRight) {
-        $("#black").css("left", $("#black").offset().left - 15);
+        $("#black").css("left", $("#black").offset().left - 20);
     }
 };
