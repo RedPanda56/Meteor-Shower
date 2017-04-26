@@ -15,14 +15,14 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     $("#pic").css("left", rando);
     $("#pic").css("top", 0);
 }
-    
+   checkCollision();
+   
    }, 100 );
    
    //Moves Character
     $("#body").keydown(function(event) {
         
         dontMove();
-        checkCollision();
         
     if (event.which === 37) {
         $("#black").css("left", $("#black").offset().left - 20);
@@ -39,21 +39,27 @@ var top1 = $("#ground").offset().top - $("#pic").height();
 function checkCollision() {
     
     var blackTop = $("#black").offset().top;
-    var picBottom = $("#pic").offset().top - $("#pic").height();
-    var blackBottom = $("#black").offset().top - $("#black").height();
-    var picTop = $("#pic").offset().top;
     var blackRight = $("#black").offset().left + $("#black").width();
-    var picLeft = $("#pic").offset().left;
     var blackLeft = $("#black").offset().left;
-    var picRight = $("#pic").offset().left + $("#pic").width();
     
-    if(picBottom == blackTop) {
-        $("#black").hide();
+    var picBottom = $("#pic").offset().top + $("#pic").height();
+    var picRight = $("#pic").offset().left + $("#pic").width();
+    var picLeft = $("#pic").offset().left;
+    
+    console.log(blackTop);
+    console.log(picBottom);
+    
+    if(blackTop < picBottom && picLeft < blackRight && picRight > blackLeft) {
+        alert("You Died!");
     } 
     else {
         $("#black").show();
     }
 };
+
+
+
+
 
 
 
