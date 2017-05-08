@@ -1,6 +1,7 @@
+var score = 0;
+
 $(document).ready(function()
 {
-    
 var $pic = $("#pic"); 
 
    setInterval(function(){
@@ -16,6 +17,7 @@ var top1 = $("#ground").offset().top - $("#pic").height();
     $("#pic").css("top", 0);
 }
    checkCollision();
+   scorePoint();
    
    }, 100 );
    
@@ -35,7 +37,8 @@ var top1 = $("#ground").offset().top - $("#pic").height();
         });
     
 });
-    
+
+
 function checkCollision() {
     
     var blackTop = $("#black").offset().top;
@@ -50,11 +53,8 @@ function checkCollision() {
     console.log(picBottom);
     
     if(blackTop < picBottom && picLeft < blackRight && picRight > blackLeft) {
-        alert("You Died!");
+        score = 0;
     } 
-    else {
-        $("#black").show();
-    }
 };
 
 
@@ -80,4 +80,18 @@ function dontMove() {
     else if (barLeft > pageRight) {
         $("#black").css("left", $("#black").offset().left - 20);
     }
+};
+
+
+function scorePoint() {
+    
+    
+    var paddle = $("#black").offset().top + $("#black").width();
+    var botPic = $("#pic").offset().top + $("#pic").height();
+    var blackTop = $("#black").offset().top + $("#black").height();
+    if ( blackTop <= botPic){
+        score += 1;
+        console.log(score);
+        $("#score").text("Meteors Avoided: " + score);
+    }  
 };
